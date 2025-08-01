@@ -3,52 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Book</title>
+    <title>Pine City Zoo</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body onload="fetchContacts()">
-    <div id="table">Contacts loading ...</div>
-    <button id="refresh" type="button">Refresh</button>
-    <button id="addcontact" type="button">Add Contact</button>
-
-    <script src="config.js"></script>
-    <script>
-      document
-        .getElementById("refresh")
-        .addEventListener("click", fetchContacts);
-      document
-        .getElementById("addcontact")
-        .addEventListener("click", addcontact);
-      function fetchContacts() {
-        fetch(rootPath + "controller/get-contacts/")
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            displayoutPut(data);
-          });
-      }
-
-      function displayoutPut(data) {
-        output = "<table>";
-        for (a in data) {
-          output += `
-            <tr onclick= "editcontact(${data[a].id})"> 
-              <td><img src ="${rootPath}controller/uploads/${data[a].avatar}" width =" 40px"/<td>
-              <td><h5>${data[a].firstname}</h5></td>
-              <td><h5>${data[a].lastname}</h5></td>
-              </tr>
-
-            `;
-        }
-        output += "</table>";
-        document.getElementById("table").innerHTML = output;
-      }
-      function addcontact() {
-        window.open("add-contact.html", "_self");
-      }
-      function editcontact(id) {
-        window.open("edit-contact.html?id=" + id, "_self");
-      }
-    </script>
+  <body>
+    <div id="Header">
+      <img src="images/logo.png" />
+    </div>
+    <div id="tabs-top">
+      <a href="Animals.html">ANIMALS</a>
+      <a href="index.html">MAPS</a>
+      <a href="places.html">PLACES</a>
+    </div>
+    <div id="Main-home">
+      <img src="images/map.png" width="100%" />
+    </div>
+    <div id="tabs-bottom">
+      <a href="#">WEATHER</a>
+      <a href="#">FEEDBACK</a>
+    </div>
   </body>
 </html>
